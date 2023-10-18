@@ -1,6 +1,11 @@
 Extension { #name : #Character }
 
 { #category : #'*Unistring' }
+Character >> generalCategories [
+	^UnicodeGeneralCategoryBitmask generalCategoriesFor: self codePoint
+]
+
+{ #category : #'*Unistring' }
 Character >> gtInspectorCharacterIn: composite [
 	<gtInspectorPresentationOrder: 30>
 	^ composite table
@@ -15,6 +20,11 @@ Character >> gtInspectorCharacterIn: composite [
 		column: 'Key' evaluated: #key;
 		column: 'Value' evaluated: [ :each | each value printString ];
 		send: #value
+]
+
+{ #category : #'*Unistring' }
+Character >> isGeneralCategory: cat [
+	^UnicodeGeneralCategoryBitmask codepoint: self codePoint isGeneralCategory: cat
 ]
 
 { #category : #'*Unistring' }
